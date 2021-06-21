@@ -1,0 +1,21 @@
+<section class="col-7 bg-warning mx-auto p-1 m-1">
+  <h2>Viewemp</h2>
+  
+ <table class="table table-primary table-striped table-hover">
+    <tr>
+      <th>Employee Id</th>
+      <th>Employee Name</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>DOJ</th>
+    </tr>
+    <tr *ngFor="let e of emp">
+      <td>{{e.empId}}</td>
+      <td>{{e.empName | titlecase}}</td> 
+      <td>{{e.empSal | currency:'INR'}}</td>
+      <td>{{e.dept.deptName | uppercase}}</td>
+      <td>{{e.empDoj}}</td>
+      
+    </tr>
+ </table>
+</section>

@@ -1,0 +1,32 @@
+<section class = "col-md-4 mx-auto ">
+  <h2 class = "text-center">Add Employee</h2>
+  <div class = "alert alert-success" *ngIf = "msg != undefined">{{msg}}</div>
+  <div class = "alert alert-danger" *ngIf = "errorMsg != undefined || errors !=undefined">{{errorMsg}}
+    <div *ngFor = "let e of errors">{{e}}</div>
+  </div>
+  <form #frm = "ngForm" (ngSubmit) = "addEmp()">
+
+    <div>Employee Name</div>
+    <div><input type="text" name = "ename" [(ngModel)] = "emp.empName" required #m1ename = "ngModel" class = "form-control"></div>
+    <div class = "alert alert-danger" *ngIf = "m1ename.invalid && m1ename.touched">Employee Name is required</div>
+
+    <div>Salary</div>
+    <div><input type="number" name = "esal" [(ngModel)] = "emp.empSal" required #m1esal = "ngModel" class = "form-control"></div>
+    <div class = "alert alert-danger" *ngIf = "m1esal.invalid && m1esal.touched">Salary is required</div>
+   
+    <div>Department</div>
+    <div>
+      <select [(ngModel)] = "emp.deptName" name = "emp.dept" #m1edept = "ngModel" class = "form-control">
+        <option value="">--select dept--</option>
+        <option *ngFor = "let d of depts" value = "{{d.deptName}}">{{d.deptName}}</option>
+      </select>
+    </div>
+    <div class = "alert alert-danger" *ngIf = "m1edept.invalid && m1edept.touched">Department is required</div>
+    
+    <div>DOJ</div>
+    <div><input type="date" name = "doj" [(ngModel)] = "emp.doj" required #m1doj = "ngModel" class = "form-control"></div>
+    <div class = "alert alert-danger" *ngIf = "m1doj.invalid && m1doj.touched">DOj is required</div>
+    <div class = "mt-2 text-center"><input type="submit" value = "Add employee" [disabled] = "!frm.valid" class = "btn btn-danger"></div>
+    
+  </form>
+</section>

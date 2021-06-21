@@ -1,0 +1,12 @@
+<section>
+  <h2>View By Department</h2>
+  <form #frm="ngForm" (ngSubmit)="viewbydept()">
+    <div>Enter Department To search <select name="dept" [(ngModel)]="dept" class="form-control">
+        <option value="#">--select Department--</option>
+        <option *ngFor="let d of deptObj" value="{{d.deptName}}">{{d.deptName}}</option>
+      </select>
+    </div>
+    <div><input type="submit" value="search" [disabled]="!frm.valid"
+        class="btn btn-danger"></div>
+  </form>
+</section>
